@@ -3,7 +3,7 @@ import express, { Express, NextFunction, Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import healthcheckRouter from './routes/healthcheck';
-import { API_ROUTES } from 'common/src/constants';
+import feedbackRouter from './routes/FeedBackForm.ts';
 
 const app: Express = express(); // Setup the backend
 
@@ -21,9 +21,10 @@ app.use(express.json()); // This processes requests as JSON
 app.use(express.urlencoded({ extended: false })); // URL parser
 app.use(cookieParser()); // Cookie parser
 
-// Setup routers. ALL ROUTERS MUST use /api as a start point, or they
-// won't be reached by the default proxy and prod setup
-app.use(API_ROUTES.HEALTHCHECK, healthcheckRouter);
+//TODO
+app.use('/api/healthcheck', healthcheckRouter);
+
+app.use('/api/feedback', feedbackRouter);
 
 /**
  * Catch all 404 errors, and forward them to the error handler

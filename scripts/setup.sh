@@ -21,9 +21,9 @@ if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
 fi
 
 # Copy example files
-cp .env.example .env
-cp .env.example .env.wpi
-cp .env.example .env.prod
+cp .env .env
+cp .env .env.wpi
+cp .env .env.prod
 cp .env.aws.example .env.aws
 
 echo "Setup complete! ✅"
